@@ -1,0 +1,107 @@
+﻿using System.IO;
+using FluentAssertions;
+using NUnit.Framework;
+using PdfReportingPoc.Fields;
+using PdfReportingPoc.Data;
+
+namespace PdfReportingPoc.Data.Tests.Fields
+{
+    [TestFixture]
+    public class PdfFieldsTests
+    {
+
+        [Test]
+        public void MarkFieldsReadOnly_GivenNullOrEmptyFields_ShouldReturnNoFieldsToMark()
+        {
+            //Arrange
+            var sut = CreatePdfFields();
+
+            var fields = GetInvalidFieldNames();
+
+            var filename = "ThreeFieldsWithLabels.pdf";
+            var baseDirectory = TestContext.CurrentContext.TestDirectory + "\\Forms\\";
+            var currentFilePath = Path.Combine(baseDirectory, filename);
+
+            //Act
+            var actual = sut.MarkFieldsReadOnly(fields, File.ReadAllBytes((currentFilePath)));
+
+            //Assert
+            var expected = new byte[0];
+            var expectedMessage = $"{""} does not exist";
+            Assert.AreEqual(expected, actual.Output);
+            Assert.AreEqual(expectedMessage, actual.ErrorMessage);
+        }
+
+        
+        [Test]
+
+        [TestCase()]
+        public void MarkFieldsReadOnly_GivenInvalidFields_ShouldReturnFieldDoesNotExist()
+        {
+            //Arrange
+            var sut = CreatePdfFields();
+            var fields = GetNonExistingFieldNames();
+
+            var filename = "ThreeFieldsWithLabels.pdf";
+            var baseDirectory = TestContext.CurrentContext.TestDirectory + "\\Forms\\";
+            var currentFilePath = Path.Combine(baseDirectory, filename);
+
+            //Act
+            var actual = sut.MarkFieldsReadOnly(fields, File.ReadAllBytes((currentFilePath)));
+
+            //Assert
+            var expected = new byte[0];
+            var expectedMessage = $"{"Green"} does not exist";
+            Assert.AreEqual(expected, actual.Output);
+            Assert.AreEqual(expectedMessage, actual.ErrorMessage);
+        }
+
+<<<<<<< HEAD
+
+        [Test]
+=======
+>>>>>>> added new folder Fields to domain
+        [Test]
+        public void MarkFieldsReadOnly_GivenValidFilenameAndFields_ShouldReturnNewFileWithSpecifiedFieldsMarkedAsReadOnly()
+        {
+            //Arrange
+            var sut = CreatePdfFields();
+            var fields = GetValidFieldNames();
+
+            var filename = "ThreeFieldsWithLabels.pdf";
+            var baseDirectory = TestContext.CurrentContext.TestDirectory + "\\Forms\\";
+            var currentFilePath = Path.Combine(baseDirectory, filename);
+
+            var fileLength = File.ReadAllBytes(currentFilePath);
+
+            //Act
+            var actual = sut.MarkFieldsReadOnly(fields, File.ReadAllBytes((currentFilePath)));
+
+            //Assert
+            actual.Output.Length.Should().BeGreaterThan(fileLength.Length);
+        }
+
+        private static PdfFields CreatePdfFields()
+        {
+            return new PdfFields();
+        }
+
+        private static string[] GetValidFieldNames()
+        {
+            return new[] { "First Name", "Age", "Surname" };
+        }
+
+        private static string[] GetInvalidFieldNames()
+        {
+            return new[] {null,"", " " };
+        }
+
+        private static string[] GetNonExistingFieldNames()
+        {
+            return new[] {"First Name", "Green", "Age" };
+        }
+
+    }
+
+
+}

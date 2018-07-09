@@ -1,0 +1,44 @@
+{
+	"FileName": "DemoForm.pdf",
+	"ListOfFields": [{
+			"FieldName": "FirstName",
+			"FieldValue": "Bob"
+		},
+		{
+			"FieldName": "Surname",
+			"FieldValue": "Smith"
+		},
+		{
+			"FieldName": "DateOfBirth",
+			"FieldValue": "1975-05-08"
+		},
+		{
+			"FieldName": "GrossSalary",
+			"FieldValue": "10000"
+		},
+		{
+			"FieldName": "Tax",
+			"FieldValue": "1000"
+		},
+		{
+			"FieldName": "AccommodationCost",
+			"FieldValue": "2500"
+		},
+		{
+			"FieldName": "CellPhone",
+			"FieldValue": "150"
+		},
+		{
+			"FieldName": "CreditCard",
+			"FieldValue": "500"
+		},
+		{
+			"FieldName": "OtherDebt",
+			"FieldValue": "4500"
+		}
+	],
+	"QrCodeData": {
+		"Text": "unique id here",
+		"checkSumEnabled": true
+	}
+}

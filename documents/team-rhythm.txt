@@ -1,0 +1,9 @@
+- Rhythm of Team
+ + M-Th Min 30 Minutes of Kata Practice Each Morning
+ + M-Th 08:30 - 08:45 - Standup
+ + M-Th 09:30 - 11:00 & 13:30 - 15:00 - Team Focus Periods
+ + Th 15:00 - 16:00 - Team Demo & Retro
+ + Every 3rd Friday 08:30 - 12:00 - Company Demo
+  1) July 6
+  2) July 27
+  3) Aug 17

@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+﻿using Nancy;
+
+namespace PdfReporting.Web.Services.Home
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Nancy;
+
+namespace PdfReporting.Web2.Home
+>>>>>>> 9c5c4db01d468d652ed0646f1a5d88b0603c8af9
+{
+    public class Home : NancyModule
+    {
+        public Home()
+        {
+            Get("/", _ => Response.AsRedirect("/swagger-ui"));
+
+            Get("/swagger-ui", _ =>
+            {
+                var url = $"{Request.Url.BasePath}/api-docs";
+                return View["doc", url];
+            });
+        }
+    }
+}

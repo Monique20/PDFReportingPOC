@@ -1,0 +1,69 @@
+﻿using System;
+using Aspose.Pdf;
+using Aspose.Pdf.Forms;
+using System.IO;
+using System.Linq;
+
+namespace PdfReportingPoc.Fields
+{
+    public class PdfFields
+    {
+       
+        public ResultBuilder MarkFieldsReadOnly(string[] fields, byte[] temp)
+        {
+            var results = new ResultBuilder();
+
+            var documentBytes = new byte[0];
+            try
+            {
+            using (var incomingStream = new MemoryStream(temp))
+            {
+                    var pdfDocument = new Document(incomingStream);
+                    foreach (var field in fields)
+                    {
+                        var invalidField = pdfDocument.Form.Any(x => x.FullName.Equals((field)));
+
+                        if (!invalidField)
+                        {
+                            results.Output = documentBytes;
+                            results.ErrorMessage = "Field does not exist";
+                            return results;                        }
+
+            
+                    }
+                    DisableFields(fields, pdfDocument);
+                    using (var documentStream = new MemoryStream())
+                    {
+                        pdfDocument.Save(documentStream);
+                        documentBytes = documentStream.ToArray();
+                    }
+                }
+                results.Output = documentBytes;
+            }
+            catch (Exception e)
+            {
+                results.ErrorMessage = e.Message;
+            }
+           
+            return results;
+        }
+        private static void DisableFields(string[] fields, Document pdfDocument)
+        {
+            foreach (Field formField in pdfDocument.Form)
+            {
+                for (int i = 0; i < fields.Length; i++)
+                {
+                    if (formField.PartialName.Equals(fields[i]))
+                    {
+                        formField.ReadOnly = true;
+                    }
+                }
+            }
+
+        }
+
+       
+        
+
+    }
+}
