@@ -2,7 +2,7 @@
 {
     public interface ICreateBarCodeUseCase
     {
-        CreateQrCodeResponse Execute(CreateQrCodeRequest requestData);
+        CreateBarCodeResponse Execute(CreateBarCodeRequest requestData);
 
     }
 }

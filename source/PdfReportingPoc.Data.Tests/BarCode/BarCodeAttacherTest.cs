@@ -45,7 +45,7 @@ namespace PdfReportingPoc.Data.Tests.BarCode
             return new BarCodeAttachmentOperations();
         }
 
-        private static AttachQrCodeRequest GetRequestInput()
+        private static AttachBarCodeRequest GetRequestInput()
         {
             var pdfPath = AppDomain.CurrentDomain.BaseDirectory + "TestData\\BootCampForm-v2.pdf";
             var qrBarCodePath = AppDomain.CurrentDomain.BaseDirectory + "TestData\\barcode3.png";
@@ -53,7 +53,7 @@ namespace PdfReportingPoc.Data.Tests.BarCode
             var pdfBytes = File.ReadAllBytes(pdfPath);
             var qrBarCodeBytes = File.ReadAllBytes(qrBarCodePath);
 
-            return new AttachQrCodeRequest
+            return new AttachBarCodeRequest
             {
                 FileBytes = pdfBytes,
                 QrCodeBytes = qrBarCodeBytes,

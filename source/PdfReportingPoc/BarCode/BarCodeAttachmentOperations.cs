@@ -7,7 +7,7 @@ namespace PdfReportingPoc.BarCode
 {
     public class BarCodeAttachmentOperations : IBarCodeAttachmentOperations
     {
-        public byte[] Attach(AttachQrCodeRequest request)
+        public byte[] Attach(AttachBarCodeRequest request)
         {
             byte[] bytes;
             using (var qrCodeStream = GetStream(request.QrCodeBytes))

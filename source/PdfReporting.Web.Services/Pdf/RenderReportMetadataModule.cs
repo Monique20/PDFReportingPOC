@@ -36,8 +36,15 @@ namespace PdfReporting.Web.Services.Pdf
                                 QrCodeData = new {
                                     Text = "unique id here",
                                     CheckSumEnabled = true
-                        
-                                }
+                                },
+                                attachQrCodeRequest = new{
+                                    PageNumber = 1,
+                                    LowerLeftX = 100f,
+                                    LowerLeftY = 100f,
+                                    UpperRightX = 200f,
+                                    UpperRightY = 200f,
+                                },
+                                Password = "siphenathi"
                             },
                             
                         })

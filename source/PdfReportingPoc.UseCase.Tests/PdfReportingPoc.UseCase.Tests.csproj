@@ -63,9 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarCode\AttachQrCodeUseCaseTests.cs" />
+    <Compile Include="BarCode\AttachBarCodeUseCaseTests.cs" />
     <Compile Include="BarCode\CreateBarCodeUseCaseTests.cs" />
-    <Compile Include="BarCode\ExtractQrCodeTest.cs" />
+    <Compile Include="BarCode\ExtractBarCodeTest.cs" />
     <Compile Include="Pdf\PopulatePdfUseCaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pdf\RenderReportUseCaseTests.cs" />

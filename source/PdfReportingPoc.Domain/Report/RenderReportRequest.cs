@@ -8,9 +8,8 @@ namespace PdfReportingPoc.Domain.Report
     {
         public string FileName { get; set; }
         public List<PdfFields> ListOfFields { get; set; }
-        public CreateQrCodeRequest QrCodeData { get; set; }
-        public AttachQrCodeRequest attachQrCodeRequest { get; set; }
+        public CreateBarCodeRequest QrCodeData { get; set; }
+        public Barcode Barcode { get; set; }
         public string Password { get; set; }
-
     }
 }

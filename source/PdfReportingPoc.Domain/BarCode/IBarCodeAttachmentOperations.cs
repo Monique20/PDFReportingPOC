@@ -2,6 +2,6 @@
 {
     public interface IBarCodeAttachmentOperations
     {
-         byte[] Attach(AttachQrCodeRequest resquest);
+         byte[] Attach(AttachBarCodeRequest resquest);
     }
 }

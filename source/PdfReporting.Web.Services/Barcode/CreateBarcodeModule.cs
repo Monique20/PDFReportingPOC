@@ -22,7 +22,7 @@ namespace PdfReporting.Web.Services.BarCode
             {
                 return HttpStatusCode.BadRequest;
             }
-            var inputData = new CreateQrCodeRequest
+            var inputData = new CreateBarCodeRequest
             {
                 Text = parameters.text,
                 CheckSumEnabled = parameters.checkSumEnabled

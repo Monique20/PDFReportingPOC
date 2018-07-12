@@ -34,7 +34,7 @@ namespace PdfReportingPoc.Web
             container.Register(typeof(IPdfOperations), typeof(PdfOperations));
             container.Register(typeof(IBarCodeAttachmentOperations), typeof(BarCodeAttachmentOperations));
             container.Register(typeof(IBarCodeAttachmentOperations), typeof(BarCodeAttachmentOperations));
-            container.Register(typeof(IAttachQrCodeUseCase), typeof(AttachQrCodeUseCase));
+            container.Register(typeof(IAttachBarCodeUseCase), typeof(AttachBarCodeUseCase));
 
             base.ApplicationStartup(container, pipelines);
         }

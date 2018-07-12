@@ -9,7 +9,7 @@ namespace PdfReportingPoc.UseCase.BarCode
         {
             _barCodes = barCodes;
         }
-        public CreateQrCodeResponse Execute(CreateQrCodeRequest inputData)
+        public CreateBarCodeResponse Execute(CreateBarCodeRequest inputData)
         {
             var createBarCode = _barCodes.With_Text(inputData.Text)
                 .With_Default_Resolution()
@@ -18,7 +18,7 @@ namespace PdfReportingPoc.UseCase.BarCode
                 .As_Png()
                 .Create();
 
-            var result = new CreateQrCodeResponse { BarCode = createBarCode};
+            var result = new CreateBarCodeResponse { BarCode = createBarCode};
             return result;
         }
     }

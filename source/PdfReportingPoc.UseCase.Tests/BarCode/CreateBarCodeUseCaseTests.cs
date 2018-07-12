@@ -14,7 +14,7 @@ namespace PdfReportingPoc.UseCase.Tests.BarCode
         public void Execute_GivenValidInputData_CreateMethodForCreatingQrCodeShouldBeCalled()
         {
             //Arrange
-            var inputData = new CreateQrCodeRequest
+            var inputData = new CreateBarCodeRequest
             {
                 Text = Guid.NewGuid().ToString(),
                 CheckSumEnabled = true

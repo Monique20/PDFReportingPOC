@@ -40,16 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarCode\AttachQrCodeRequest.cs" />
-    <Compile Include="BarCode\AttachQrCodeResponse.cs" />
-    <Compile Include="BarCode\CreateQrCodeResponse.cs" />
-    <Compile Include="BarCode\CreateQrCodeRequest.cs" />
-    <Compile Include="BarCode\ExtractQrCodeRequest.cs" />
-    <Compile Include="BarCode\ExtractQrCodeResponse.cs" />
-    <Compile Include="BarCode\IAttachQrCodeUseCase.cs" />
+    <Compile Include="BarCode\AttachBarCodeRequest.cs" />
+    <Compile Include="BarCode\AttachBarCodeResponse.cs" />
+    <Compile Include="BarCode\Barcode.cs" />
+    <Compile Include="BarCode\CreateBarCodeResponse.cs" />
+    <Compile Include="BarCode\CreateBarCodeRequest.cs" />
+    <Compile Include="BarCode\ExtractBarCodeRequest.cs" />
+    <Compile Include="BarCode\ExtractBarCodeResponse.cs" />
+    <Compile Include="BarCode\IAttachBarCodeUseCase.cs" />
     <Compile Include="BarCode\IBarCodes.cs" />
     <Compile Include="BarCode\ICreateBarCodeUseCase.cs" />
-    <Compile Include="BarCode\IExtractQrCodeUseCase.cs" />
+    <Compile Include="BarCode\IExtractBarCodeUseCase.cs" />
     <Compile Include="Pdf\IPopulatePdfUseCase.cs" />
     <Compile Include="Pdf\IPdfOperations.cs" />
     <Compile Include="Pdf\PdfFields.cs" />

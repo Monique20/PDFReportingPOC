@@ -24,12 +24,12 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = "BootCampForm-v2.pdf",
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -66,12 +66,12 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = "BootCampForm-v2.pdf",
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -114,12 +114,12 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = "BootCampForm-v2.pdf",
                 ListOfFields = listOfFields,
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -158,12 +158,12 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = listOfFields,
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -202,11 +202,20 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = listOfFields,
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
-                }
+                },
+                Barcode = new Barcode
+                {
+                    LowerLeftX = 100,
+                    LowerLeftY = 100,
+                    UpperRightX = 200,
+                    UpperRightY = 200,
+                    PageNumber = 1
+                },
+                Password = "password"
             };
 
             var renderReportSubstitute = Substitute.For<IRenderReportUseCase>();
@@ -235,12 +244,12 @@ namespace PdfReporting.Web.Services.Tests.Pdf
             {
                 FileName = "me.pdf",
                 ListOfFields = listOfFields,
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,

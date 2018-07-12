@@ -9,7 +9,7 @@ namespace PdfReporting.Web.Services.BarCode
     {
         public CreateBarcodeMetadataModule(ISwaggerModelCatalog modelCatalog)
         {
-            modelCatalog.AddModels(typeof(CreateQrCodeResponse), typeof(CreateQrCodeResponse));
+            modelCatalog.AddModels(typeof(CreateBarCodeResponse), typeof(CreateBarCodeResponse));
 
             Describe["GetBarcode"] = desc => desc.AsSwagger(
                 with => with.Operation(
@@ -36,7 +36,7 @@ namespace PdfReporting.Web.Services.BarCode
                             Required = true,
                             Description = "enable checksum on barcode"
                         })
-                        .Response(r => r.Schema<CreateQrCodeResponse>(modelCatalog).Description("Returns barcode bytes"))
+                        .Response(r => r.Schema<CreateBarCodeResponse>(modelCatalog).Description("Returns barcode bytes"))
                         .Response(404, r => r.Description("Can't find stuffs"))
                 ));
         }

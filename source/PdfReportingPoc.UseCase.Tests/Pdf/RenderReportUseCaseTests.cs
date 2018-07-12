@@ -22,12 +22,12 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -43,10 +43,10 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse { Output = new byte[0] });
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -69,12 +69,12 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -90,9 +90,9 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse {Output = new byte[999]});
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -115,12 +115,12 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -136,9 +136,9 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse { Output = new byte[999] });
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -149,7 +149,7 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             sut.Execute(request);
 
             //Assert
-            barCodeCreater.Received().Execute(Arg.Any<CreateQrCodeRequest>());
+            barCodeCreater.Received().Execute(Arg.Any<CreateBarCodeRequest>());
             
         }
 
@@ -163,16 +163,16 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
-                    UpperRightX= 200,
+                    UpperRightX = 200,
                     UpperRightY = 200,
                     PageNumber = 1
                 }
@@ -184,9 +184,9 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse { Output = new byte[999] });
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -197,7 +197,7 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             sut.Execute(request);
 
             //Assert
-            barCodeAttacher.Received().Execute(Arg.Any<AttachQrCodeRequest>());
+            barCodeAttacher.Received().Execute(Arg.Any<AttachBarCodeRequest>());
         }
 
         [Test]
@@ -210,12 +210,12 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -229,7 +229,7 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fileLoader.LoadFile(Arg.Any<string>()).Returns(new byte[0]);
             var fieldsOperator = Substitute.For<IPopulatePdfUseCase>();
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -240,8 +240,8 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
 
             //Assert
             fieldsOperator.DidNotReceive().Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>());
-            barCodeCreater.DidNotReceive().Execute(Arg.Any<CreateQrCodeRequest>());
-            barCodeAttacher.DidNotReceive().Execute(Arg.Any<AttachQrCodeRequest>());
+            barCodeCreater.DidNotReceive().Execute(Arg.Any<CreateBarCodeRequest>());
+            barCodeAttacher.DidNotReceive().Execute(Arg.Any<AttachBarCodeRequest>());
             
         }
         
@@ -254,12 +254,12 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
                 },
-                attachQrCodeRequest = new AttachQrCodeRequest
+                Barcode = new Barcode
                 {
                     LowerLeftX = 100,
                     LowerLeftY = 100,
@@ -276,9 +276,9 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse { Output = new byte[999] });
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
@@ -301,10 +301,18 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             {
                 FileName = fileName,
                 ListOfFields = GetValidFieldNames(),
-                QrCodeData = new CreateQrCodeRequest
+                QrCodeData = new CreateBarCodeRequest
                 {
                     Text = Guid.NewGuid().ToString(),
                     CheckSumEnabled = true
+                },
+                Barcode = new Barcode
+                {
+                    LowerLeftX = 100,
+                    LowerLeftY = 100,
+                    UpperRightX = 200,
+                    UpperRightY = 200,
+                    PageNumber = 1
                 },
                 Password = ""
             };
@@ -315,9 +323,9 @@ namespace PdfReportingPoc.UseCase.Tests.Pdf
             fieldsOperator.Execute(Arg.Any<byte[]>(), Arg.Any<List<PdfFields>>())
                 .Returns(new PdfFieldsOperationsResponse { Output = new byte[0] });
             var barCodeCreater = Substitute.For<ICreateBarCodeUseCase>();
-            barCodeCreater.Execute(Arg.Any<CreateQrCodeRequest>()).Returns(new CreateQrCodeResponse());
-            var barCodeAttacher = Substitute.For<IAttachQrCodeUseCase>();
-            barCodeAttacher.Execute(Arg.Any<AttachQrCodeRequest>()).Returns(new AttachQrCodeResponse());
+            barCodeCreater.Execute(Arg.Any<CreateBarCodeRequest>()).Returns(new CreateBarCodeResponse());
+            var barCodeAttacher = Substitute.For<IAttachBarCodeUseCase>();
+            barCodeAttacher.Execute(Arg.Any<AttachBarCodeRequest>()).Returns(new AttachBarCodeResponse());
             var passwordProtecter = Substitute.For<IPdfOperations>();
             passwordProtecter.PasswordProtect(Arg.Any<byte[]>(), Arg.Any<string>()).Returns(new byte[0]);
 
